@@ -108,7 +108,7 @@ class ContrastiveDecoding:
             stop_word_ids = self.tokenizer.encode('\n' + stop_word)[3:]
             list_stop_word_ids.append(stop_word_ids)
             print("Added stop word: ", stop_word, 'with the ids', stop_word_ids, flush=True)
-        self.stopping_criteria.append(LLamaQaStoppingCriteria(list_stop_word_ids)) # 여기수정
+        self.stopping_criteria.append(LLamaQaStoppingCriteria(list_stop_word_ids)) 
 
     def generate(self, input_text=None, evil_input_text=None, input_ids=None, max_new_tokens=256, top_p=0.95, top_k=0, temperature=0.8, 
                  mature_layer=None, premature_layer=None, candidate_premature_layers=[], 
