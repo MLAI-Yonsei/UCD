@@ -255,7 +255,7 @@ if __name__ == "__main__":
     parser.add_argument("--shard-id", type=int, default=None)
     parser.add_argument("--do-rating", action="store_true")
     parser.add_argument("--is-chat", action="store_true")
-    parser.add_argument("--mode", type=str, choices=["greedy", "contrastive-decoding", "dola", "prompt-contrastive-decoding","Entropy-contrastive-decoding","Cumulative-Entropy-contrastive-decoding1","Cumulative-Entropy-contrastive-decoding2","Energy-contrastive-decoding","Cumulative-Energy-contrastive-decoding1","Cumulative-Energy-contrastive-decoding2"], default="greedy")
+    parser.add_argument("--mode", type=str, choices=["greedy", "dola", "prompt-contrastive-decoding","UCD"], default="greedy")
     parser.add_argument("--gpt3-config", type=str, default=None)
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--max-new-tokens", type=int, default=50)
