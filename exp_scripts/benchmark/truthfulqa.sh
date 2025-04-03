@@ -18,7 +18,7 @@ generation_args="
 "
 
 echo "Greedy Decoding"
-for i in {0..7}; do
+for i in 0 1 2 3 4 5 6 7 ; do
     echo "devices: ${i}"
     CMD="CUDA_VISIBLE_DEVICES=$i nohup python ${cli_path}
         --model-name ${model_name} \
@@ -44,7 +44,7 @@ cp $0 "$(dirname "$output_path")"
 
 
 echo "ICD"
-for i in {0..7}; do
+for i in 0 1 2 3 4 5 6 7 ; do
     echo "devices: ${i}"
     CMD="CUDA_VISIBLE_DEVICES=$i nohup python ${cli_path}
         --model-name ${model_name} \
