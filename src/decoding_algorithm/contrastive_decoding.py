@@ -218,13 +218,13 @@ class ContrastiveDecoding:
 
             elif mode == 'UCD':
                 assert self.amateur_model is not None
-                alpha = 1
                 beta = 1
+                T = 1
 
                 def calculate_energy(logits, logit_prev, temperature=1):
         
-                    adjusted_logits = alpha * logits + logit_prev
-                    return temperature * torch.logsumexp(adjusted_logits / temperature, dim=-1)  # (answer_len,)
+                    adjusted_logits = logits + logit_prev
+                    return T * torch.logsumexp(adjusted_logits / T, dim=-1)  # (answer_len,)
 
                 base_outputs = self.model(input_ids)[0].squeeze(0)
                 base_logits = base_outputs[prefix_ids.shape[-1] - 1: -1, :]  # (answer_len, vocab_size)
