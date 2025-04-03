@@ -43,7 +43,7 @@ mkdir -p $output_path
 cp $0 "$(dirname "$output_path")"
 
 
-echo "ICD"
+echo "UCD"
 for i in 0 1 2 3 4 5 6 7 ; do
     echo "devices: ${i}"
     CMD="CUDA_VISIBLE_DEVICES=$i nohup python ${cli_path}
