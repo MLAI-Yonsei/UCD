@@ -241,9 +241,9 @@ def MC_calcs(scores_true, scores_false, ref_true, ref_best):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model-name", type=str, default="huggyllama/llama-7b")
-    parser.add_argument("--base_model-name", type=str, default=None)
+    parser.add_argument("--amateur-model-name", type=str, default=None)
     parser.add_argument("--num-gpus", type=str, default="1")
-    parser.add_argument("--base_model-nums-gpus", type=str, default="1")   
+    parser.add_argument("--amateur-model-nums-gpus", type=str, default="1")   
     parser.add_argument("--max_gpu_memory", type=int, default=27)
     parser.add_argument("--device", type=str, choices=["cuda", "cpu"], default="cuda")
     parser.add_argument("--data-path", type=str, default="./tfqa")
@@ -285,21 +285,21 @@ if __name__ == "__main__":
         chunk_size = len(list_data_dict) // args.total_shard
         list_data_dict = list_data_dict[args.shard_id * chunk_size: (args.shard_id + 1) * chunk_size]
     
-    llm = ContrastiveDecoding(model_name, device, args.max_gpu_memory, args.base_model_name, num_gpus=int(args.num_gpus), base_model_nums_gpus=int(args.base_model_nums_gpus))
+    llm = ContrastiveDecoding(model_name, device, args.max_gpu_memory, args.amateur_model_name, num_gpus=int(args.num_gpus), amateur_model_nums_gpus=int(args.amateur_model_nums_gpus))
     stop_word_list = ["Q:"]
     llm.set_stop_words(stop_word_list)
     early_exit_layers = [int(x) for x in args.early_exit_layers.split(',')]
     
     if args.mode == "contrastive-decoding":
-        assert args.base_model_name is not None
-        print("MODE: constrastive decoding between model1: {:s} and model2: {:s}".format(args.model_name, args.base_model_name), flush=True)
+        assert args.amateur_model_name is not None
+        print("MODE: constrastive decoding between model1: {:s} and model2: {:s}".format(args.model_name, args.amateur_model_name), flush=True)
         mode = "contrastive-decoding"
         mature_layer = None
         premature_layer = None
         candidate_premature_layers = None
     elif args.mode == "UCD":
-        assert args.base_model_name is not None
-        print("MODE: constrastive decoding between model1: {:s} and model2: {:s}".format(args.model_name, args.base_model_name), flush=True)
+        assert args.amateur_model_name is not None
+        print("MODE: constrastive decoding between model1: {:s} and model2: {:s}".format(args.model_name, args.amateur_model_name), flush=True)
         mode = "UCD"
         mature_layer = None
         premature_layer = None
