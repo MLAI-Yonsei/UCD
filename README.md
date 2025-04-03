@@ -40,6 +40,7 @@ Before running `truthfulqa.sh`, make sure to edit the following variables in the
 - `amateur_model_name`: Name or path of your amateur model (only used for UCD)
 - `output_path`: Where to store the results and logs
 
+> **Note:** In this code, "amateur_model" refers to the base model in our paper.
 > ⚠️ **Important:** Make sure that the models you intend to use (`model_name` and `amateur_model_name`) are already downloaded or accessible. This script does not handle model downloading.
 
 ### Step 3: Run the Script
@@ -91,6 +92,8 @@ CMD="CUDA_VISIBLE_DEVICES=$i nohup python ${cli_path} \
     ${generation_args} \
     >${output_path}/shard_${i}.log 2>&1 &"
 ```
+
+
 ---
 
 ## 📁 Directory Structure Example
