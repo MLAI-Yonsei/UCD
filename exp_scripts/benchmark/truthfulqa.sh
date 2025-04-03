@@ -5,7 +5,7 @@ cli_path="${project_root_path}/src/benchmark_evaluation/truthfulqa_eval.py"
 data_path="${project_root_path}/data/truthfulqa"
 
 model_name="Your exp model name"
-amateur_model_name="Your ama model name"
+base_model_name="Your base model name"
 
 ### Baseline
 output_path= "Your_path"
@@ -48,7 +48,7 @@ for i in 0 1 2 3 4 5 6 7 ; do
     echo "devices: ${i}"
     CMD="CUDA_VISIBLE_DEVICES=$i nohup python ${cli_path}
         --model-name ${model_name} \
-        --amateur-model-name ${amateur_model_name} \
+        --base-model-name ${base_model_name} \
         --num-gpus 1 \
         --amateur-model-nums-gpus 1 \
         --data-path ${data_path} \
